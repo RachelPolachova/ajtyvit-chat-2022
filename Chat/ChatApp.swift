@@ -11,7 +11,11 @@ import SwiftUI
 struct ChatApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            VStack {
+                MessageView(message: MessageModel(content: "I am the current user.", isCurrentUser: true))
+                MessageView(message: MessageModel(content: "I am a friend.", isCurrentUser: false))
+            }
+//            ContentView()
         }
     }
 }
