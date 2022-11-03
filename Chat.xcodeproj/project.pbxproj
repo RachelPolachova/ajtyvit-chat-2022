@@ -14,6 +14,9 @@
 		CC4BC86B2912EBC500A69FF9 /* ChatTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4BC86A2912EBC500A69FF9 /* ChatTests.swift */; };
 		CC4BC8752912EBC500A69FF9 /* ChatUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4BC8742912EBC500A69FF9 /* ChatUITests.swift */; };
 		CC4BC8772912EBC500A69FF9 /* ChatUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4BC8762912EBC500A69FF9 /* ChatUITestsLaunchTests.swift */; };
+		CC4BC8852912F5A800A69FF9 /* MessageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4BC8842912F5A800A69FF9 /* MessageModel.swift */; };
+		CC4BC8872912F60900A69FF9 /* MessageContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4BC8862912F60900A69FF9 /* MessageContentView.swift */; };
+		CC4BC88A2912FA2500A69FF9 /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4BC8892912FA2500A69FF9 /* MessageView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +47,9 @@
 		CC4BC8702912EBC500A69FF9 /* ChatUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChatUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC4BC8742912EBC500A69FF9 /* ChatUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatUITests.swift; sourceTree = "<group>"; };
 		CC4BC8762912EBC500A69FF9 /* ChatUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		CC4BC8842912F5A800A69FF9 /* MessageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageModel.swift; sourceTree = "<group>"; };
+		CC4BC8862912F60900A69FF9 /* MessageContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageContentView.swift; sourceTree = "<group>"; };
+		CC4BC8892912FA2500A69FF9 /* MessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +100,7 @@
 		CC4BC8582912EBC200A69FF9 /* Chat */ = {
 			isa = PBXGroup;
 			children = (
+				CC4BC8882912FA1300A69FF9 /* Message */,
 				CC4BC8592912EBC200A69FF9 /* ChatApp.swift */,
 				CC4BC85B2912EBC200A69FF9 /* ContentView.swift */,
 				CC4BC85D2912EBC400A69FF9 /* Assets.xcassets */,
@@ -125,6 +132,24 @@
 				CC4BC8762912EBC500A69FF9 /* ChatUITestsLaunchTests.swift */,
 			);
 			path = ChatUITests;
+			sourceTree = "<group>";
+		};
+		CC4BC8832912F59900A69FF9 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CC4BC8842912F5A800A69FF9 /* MessageModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		CC4BC8882912FA1300A69FF9 /* Message */ = {
+			isa = PBXGroup;
+			children = (
+				CC4BC8832912F59900A69FF9 /* Model */,
+				CC4BC8862912F60900A69FF9 /* MessageContentView.swift */,
+				CC4BC8892912FA2500A69FF9 /* MessageView.swift */,
+			);
+			path = Message;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -258,7 +283,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				CC4BC85C2912EBC200A69FF9 /* ContentView.swift in Sources */,
+				CC4BC8852912F5A800A69FF9 /* MessageModel.swift in Sources */,
+				CC4BC8872912F60900A69FF9 /* MessageContentView.swift in Sources */,
 				CC4BC85A2912EBC200A69FF9 /* ChatApp.swift in Sources */,
+				CC4BC88A2912FA2500A69FF9 /* MessageView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
