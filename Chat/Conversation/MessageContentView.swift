@@ -20,9 +20,9 @@ struct MessageContentView: View {
     }
 }
 
-struct MessageContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        MessageContentView(message: MessageModel(content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas eget.",
-                                                 isCurrentUser: true))
-    }
-}
+//struct MessageContentView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        MessageContentView(message: MessageModel(content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas eget.",
+//                                                 isCurrentUser: true))
+//    }
+//}

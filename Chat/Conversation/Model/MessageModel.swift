@@ -8,7 +8,9 @@
 import Foundation
 import SwiftUI
 
-struct MessageModel {
+struct MessageModel: Identifiable {
+    var id = UUID()
+    
     let content: String
     let isCurrentUser: Bool
     

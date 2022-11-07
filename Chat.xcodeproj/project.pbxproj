@@ -17,6 +17,11 @@
 		CC4BC8852912F5A800A69FF9 /* MessageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4BC8842912F5A800A69FF9 /* MessageModel.swift */; };
 		CC4BC8872912F60900A69FF9 /* MessageContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4BC8862912F60900A69FF9 /* MessageContentView.swift */; };
 		CC4BC88A2912FA2500A69FF9 /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4BC8892912FA2500A69FF9 /* MessageView.swift */; };
+		CCE16E6D29196CCB006DD1CF /* ConversationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE16E6C29196CCB006DD1CF /* ConversationView.swift */; };
+		CCE16E6F29197582006DD1CF /* ConversationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE16E6E29197582006DD1CF /* ConversationViewModel.swift */; };
+		CCE16E71291981FC006DD1CF /* MessageInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE16E70291981FC006DD1CF /* MessageInputView.swift */; };
+		CCE16E7429198533006DD1CF /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE16E7329198533006DD1CF /* SignUpView.swift */; };
+		CCE16E7629198566006DD1CF /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE16E7529198566006DD1CF /* SignUpViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +55,11 @@
 		CC4BC8842912F5A800A69FF9 /* MessageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageModel.swift; sourceTree = "<group>"; };
 		CC4BC8862912F60900A69FF9 /* MessageContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageContentView.swift; sourceTree = "<group>"; };
 		CC4BC8892912FA2500A69FF9 /* MessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
+		CCE16E6C29196CCB006DD1CF /* ConversationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationView.swift; sourceTree = "<group>"; };
+		CCE16E6E29197582006DD1CF /* ConversationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationViewModel.swift; sourceTree = "<group>"; };
+		CCE16E70291981FC006DD1CF /* MessageInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageInputView.swift; sourceTree = "<group>"; };
+		CCE16E7329198533006DD1CF /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
+		CCE16E7529198566006DD1CF /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,7 +110,8 @@
 		CC4BC8582912EBC200A69FF9 /* Chat */ = {
 			isa = PBXGroup;
 			children = (
-				CC4BC8882912FA1300A69FF9 /* Message */,
+				CCE16E7229198525006DD1CF /* SignIn */,
+				CC4BC8882912FA1300A69FF9 /* Conversation */,
 				CC4BC8592912EBC200A69FF9 /* ChatApp.swift */,
 				CC4BC85B2912EBC200A69FF9 /* ContentView.swift */,
 				CC4BC85D2912EBC400A69FF9 /* Assets.xcassets */,
@@ -142,14 +153,26 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		CC4BC8882912FA1300A69FF9 /* Message */ = {
+		CC4BC8882912FA1300A69FF9 /* Conversation */ = {
 			isa = PBXGroup;
 			children = (
 				CC4BC8832912F59900A69FF9 /* Model */,
 				CC4BC8862912F60900A69FF9 /* MessageContentView.swift */,
 				CC4BC8892912FA2500A69FF9 /* MessageView.swift */,
+				CCE16E6C29196CCB006DD1CF /* ConversationView.swift */,
+				CCE16E70291981FC006DD1CF /* MessageInputView.swift */,
+				CCE16E6E29197582006DD1CF /* ConversationViewModel.swift */,
 			);
-			path = Message;
+			path = Conversation;
+			sourceTree = "<group>";
+		};
+		CCE16E7229198525006DD1CF /* SignIn */ = {
+			isa = PBXGroup;
+			children = (
+				CCE16E7329198533006DD1CF /* SignUpView.swift */,
+				CCE16E7529198566006DD1CF /* SignUpViewModel.swift */,
+			);
+			path = SignIn;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -282,11 +305,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CCE16E6F29197582006DD1CF /* ConversationViewModel.swift in Sources */,
+				CCE16E71291981FC006DD1CF /* MessageInputView.swift in Sources */,
+				CCE16E7629198566006DD1CF /* SignUpViewModel.swift in Sources */,
 				CC4BC85C2912EBC200A69FF9 /* ContentView.swift in Sources */,
 				CC4BC8852912F5A800A69FF9 /* MessageModel.swift in Sources */,
 				CC4BC8872912F60900A69FF9 /* MessageContentView.swift in Sources */,
 				CC4BC85A2912EBC200A69FF9 /* ChatApp.swift in Sources */,
 				CC4BC88A2912FA2500A69FF9 /* MessageView.swift in Sources */,
+				CCE16E7429198533006DD1CF /* SignUpView.swift in Sources */,
+				CCE16E6D29196CCB006DD1CF /* ConversationView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

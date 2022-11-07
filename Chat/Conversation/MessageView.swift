@@ -14,20 +14,26 @@ struct MessageView: View {
     var body: some View {
         HStack(alignment: .top) {
             
-            if !message.isCurrentUser {
+            if message.isCurrentUser {
+                Spacer()
+                MessageContentView(message: message)
+            } else {
+                
                 Image("avatar-mock1")
                     .resizable()
                     .frame(width: 30, height: 30)
                     .clipShape(Circle())
+                
+                MessageContentView(message: message)
+                
+                Spacer()
             }
-            
-            MessageContentView(message: message)
         }
     }
 }
 
 //struct MessageView_Previews: PreviewProvider {
 //    static var previews: some View {
-//        MessageView()
+//        MessageView(message: MessageModel(content: "aaa", isCurrentUser: false))
 //    }
 //}
