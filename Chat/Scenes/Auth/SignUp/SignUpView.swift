@@ -35,9 +35,10 @@ struct SignUpView: View {
                 .autocorrectionDisabled()
                 .padding(10)
                 .focused($fieldInFocus, equals: .username)
+                .keyboardType(.emailAddress)
                 .overlay {
                     RoundedRectangle(cornerRadius: 20)
-                        .strokeBorder(viewModel.error == .invalidEmail ? .red : .gray )
+                        .strokeBorder(viewModel.error == .invalidEmail ? .red : .gray)
                 }
                 .onSubmit {
                     fieldInFocus = .password1
@@ -51,7 +52,8 @@ struct SignUpView: View {
                 .focused($fieldInFocus, equals: .password1)
                 .overlay {
                     RoundedRectangle(cornerRadius: 20)
-                        .strokeBorder(.gray)
+                        // ternary operator condition
+                        .strokeBorder(viewModel.error == .invalidPassword ? .red : .gray)
                 }
                 .onSubmit {
                     fieldInFocus = .password2
@@ -65,18 +67,26 @@ struct SignUpView: View {
                 .focused($fieldInFocus, equals: .password2)
                 .overlay {
                     RoundedRectangle(cornerRadius: 20)
-                        .strokeBorder(.gray)
+                        .strokeBorder(viewModel.error == .passwordsDontMatch ? .red : .gray)
                 }
                 .onSubmit {
                     viewModel.signUp()
                 }
+            
+            NavigationLink {
+                SignInView()
+            } label: {
+                Text("Already have an account?")
+            }
             
             Spacer()
             
             Button("Sign up") {
                 viewModel.signUp()
             }
-            .padding(.bottom, 15)
+            .buttonStyle(MainButtonStyle())
+//            .padding(20)
+//            .background(Color.green)
         }
         .padding(.horizontal, 30)
     }

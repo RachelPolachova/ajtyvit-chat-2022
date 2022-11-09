@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import FirebaseAuth
 
 class SignUpViewModel: ObservableObject {
     
@@ -34,9 +35,9 @@ class SignUpViewModel: ObservableObject {
     
     func signUp() {
         
-        guard email.isValidEmail else {
-            
+        print("sign up pressed")
         
+        guard email.isValidEmail else {
             error = .invalidEmail
             
             print("email is not valid.")
@@ -44,7 +45,6 @@ class SignUpViewModel: ObservableObject {
         }
         
         guard password1.count > 5 else {
-            
             error = .invalidPassword
             
             print("at lest 6 characters.")
@@ -59,18 +59,11 @@ class SignUpViewModel: ObservableObject {
         
         error = nil
         
+        Auth.auth().createUser(withEmail: email, password: password1) { authResult, error in
+            print("authresult: \(authResult?.user)")
+            print("error: \(error)")
+        }
+        
         print("signing up with: \(email), \(password1), \(password2)")
-    }
-    
-    
-    
-}
-
-extension String {
-    var isValidEmail: Bool {
-        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
-
-        let emailPred = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
-        return emailPred.evaluate(with: self)
     }
 }
