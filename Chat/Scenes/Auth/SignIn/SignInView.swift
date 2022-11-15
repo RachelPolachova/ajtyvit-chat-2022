@@ -20,6 +20,11 @@ struct SignInView: View {
         VStack {
             Spacer()
             
+            if let error = viewModel.error {
+                Text(error.localizedDescription)
+                    .foregroundColor(.red)
+            }
+            
             TextField("e-mail", text: $viewModel.email)
                 .textInputAutocapitalization(.never)
                 .autocorrectionDisabled()

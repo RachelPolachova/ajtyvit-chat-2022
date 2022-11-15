@@ -11,12 +11,23 @@ class SignInViewModel: ObservableObject {
 
     enum SignInError: Error {
         case invalidEmail, network
+        
+        var localizedDescription: String {
+            switch self {
+            case .invalidEmail:
+                return "Invalid e-mail"
+            case .network:
+                return "Something went wrong."
+            }
+        }
     }
     
     @Published var error: SignInError?
     
     var email = ""
     var password = ""
+    
+    private let authService = AuthService()
     
     init() {
         print("sign in init")
@@ -30,6 +41,11 @@ class SignInViewModel: ObservableObject {
         }
         
         print("sign in: \(email), \(password)")
+        
+        authService.signIn(with: email, password: password) { networkError in
+            if let _ = networkError {
+                self.error = .network
+            }
+        }
     }
-    
 }

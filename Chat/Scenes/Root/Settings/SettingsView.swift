@@ -20,7 +20,7 @@ struct SettingsView: View {
                     .frame(width: 60, height: 60)
                     .clipShape(Circle())
             } else {
-                Image("avatar-mock1")
+                Image(systemName: "photo.fill")
                     .resizable()
                     .frame(width: 60, height: 60)
                     .clipShape(Circle())

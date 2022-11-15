@@ -6,40 +6,23 @@
 //
 
 import Foundation
-import FirebaseAuth
 
 class SignUpViewModel: ObservableObject {
     
-    enum FieldError: Error {
-        case invalidEmail
-        case invalidPassword
-        case passwordsDontMatch
-        
-        var localizedDescription: String {
-            switch self {
-            case .invalidEmail:
-                return "E-mail is not valid."
-            case .invalidPassword:
-                return "At least 6 chars required."
-            case .passwordsDontMatch:
-                return "Doesnt match."
-            }
-        }
-    }
-    
-    @Published var error: FieldError?
+    @Published var error: SignUpError?
     
     var email = ""
     var password1 = ""
     var password2 = ""
     
+    private let authService = AuthService()
+    
     func signUp() {
-        
         print("sign up pressed")
         
         guard email.isValidEmail else {
             error = .invalidEmail
-            
+
             print("email is not valid.")
             return
         }
@@ -59,9 +42,10 @@ class SignUpViewModel: ObservableObject {
         
         error = nil
         
-        Auth.auth().createUser(withEmail: email, password: password1) { authResult, error in
-            print("authresult: \(authResult?.user)")
-            print("error: \(error)")
+        authService.signUp(with: email, password: password1) { networkError in
+            if let networkError = networkError {
+                self.error = .network(networkError)
+            }
         }
         
         print("signing up with: \(email), \(password1), \(password2)")

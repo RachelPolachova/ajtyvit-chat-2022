@@ -10,12 +10,12 @@ import FirebaseCore
 
 
 class AppDelegate: NSObject, UIApplicationDelegate {
-  func application(_ application: UIApplication,
-                   didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
-    FirebaseApp.configure()
-
-    return true
-  }
+    func application(_ application: UIApplication,
+                     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
+        FirebaseApp.configure()
+        
+        return true
+    }
 }
 
 @main
@@ -24,17 +24,17 @@ struct ChatApp: App {
     // register app delegate for Firebase setup
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     
+    @StateObject var viewModel = ChatAppViewModel()
+    
     var body: some Scene {
         WindowGroup {
             NavigationView {
-//                RootView()
-                
-                SignUpView()
+                if viewModel.userIsSignedIn {
+                    RootView()
+                } else {
+                    SignUpView()
+                }
             }
-            
-//                MessageView(message: MessageModel(content: "I am the current user.", isCurrentUser: true))
-//                MessageView(message: MessageModel(content: "I am a friend.", isCurrentUser: false))
-//            ContentView()
         }
     }
 }

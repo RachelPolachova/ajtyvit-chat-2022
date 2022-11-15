@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CC1E6DF42922A9E700946FAF /* ChatAppViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC1E6DF32922A9E700946FAF /* ChatAppViewModel.swift */; };
+		CC1E6DF72922AFD800946FAF /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC1E6DF62922AFD800946FAF /* AuthService.swift */; };
+		CC1E6DF92922B12F00946FAF /* SignUpError.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC1E6DF82922B12F00946FAF /* SignUpError.swift */; };
+		CC1E6DFD2922BA1200946FAF /* StorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC1E6DFC2922BA1200946FAF /* StorageService.swift */; };
 		CC4BC85A2912EBC200A69FF9 /* ChatApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4BC8592912EBC200A69FF9 /* ChatApp.swift */; };
 		CC4BC85C2912EBC200A69FF9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4BC85B2912EBC200A69FF9 /* ContentView.swift */; };
 		CC4BC85E2912EBC400A69FF9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CC4BC85D2912EBC400A69FF9 /* Assets.xcassets */; };
@@ -55,6 +59,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CC1E6DF32922A9E700946FAF /* ChatAppViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatAppViewModel.swift; sourceTree = "<group>"; };
+		CC1E6DF62922AFD800946FAF /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		CC1E6DF82922B12F00946FAF /* SignUpError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpError.swift; sourceTree = "<group>"; };
+		CC1E6DFC2922BA1200946FAF /* StorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageService.swift; sourceTree = "<group>"; };
 		CC4BC8562912EBC200A69FF9 /* Chat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Chat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC4BC8592912EBC200A69FF9 /* ChatApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatApp.swift; sourceTree = "<group>"; };
 		CC4BC85B2912EBC200A69FF9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -113,6 +121,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CC1E6DF52922AFC800946FAF /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				CC1E6DF62922AFD800946FAF /* AuthService.swift */,
+				CC1E6DFC2922BA1200946FAF /* StorageService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		CC1E6DFE2922BA5200946FAF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		CC4BC84D2912EBC200A69FF9 = {
 			isa = PBXGroup;
 			children = (
@@ -120,6 +144,7 @@
 				CC4BC8692912EBC500A69FF9 /* ChatTests */,
 				CC4BC8732912EBC500A69FF9 /* ChatUITests */,
 				CC4BC8572912EBC200A69FF9 /* Products */,
+				CC1E6DFE2922BA5200946FAF /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -136,10 +161,12 @@
 		CC4BC8582912EBC200A69FF9 /* Chat */ = {
 			isa = PBXGroup;
 			children = (
+				CC1E6DF52922AFC800946FAF /* Services */,
 				CCDD8470291C1AF8001B4AF7 /* Scenes */,
 				CCDD846A291C1841001B4AF7 /* CustomUI */,
 				CCDD8463291C0F49001B4AF7 /* Extensions */,
 				CC4BC8592912EBC200A69FF9 /* ChatApp.swift */,
+				CC1E6DF32922A9E700946FAF /* ChatAppViewModel.swift */,
 				CC4BC85B2912EBC200A69FF9 /* ContentView.swift */,
 				CC4BC85D2912EBC400A69FF9 /* Assets.xcassets */,
 				CCDD8483291C34DD001B4AF7 /* GoogleService-Info.plist */,
@@ -242,6 +269,7 @@
 			children = (
 				CCE16E7329198533006DD1CF /* SignUpView.swift */,
 				CCE16E7529198566006DD1CF /* SignUpViewModel.swift */,
+				CC1E6DF82922B12F00946FAF /* SignUpError.swift */,
 			);
 			path = SignUp;
 			sourceTree = "<group>";
@@ -406,16 +434,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CC1E6DF92922B12F00946FAF /* SignUpError.swift in Sources */,
 				CCDD846F291C1ADF001B4AF7 /* SettingsView.swift in Sources */,
 				CCE16E6F29197582006DD1CF /* ConversationViewModel.swift in Sources */,
 				CCE16E71291981FC006DD1CF /* MessageInputView.swift in Sources */,
 				CCE16E7629198566006DD1CF /* SignUpViewModel.swift in Sources */,
+				CC1E6DF42922A9E700946FAF /* ChatAppViewModel.swift in Sources */,
 				CC4BC85C2912EBC200A69FF9 /* ContentView.swift in Sources */,
+				CC1E6DF72922AFD800946FAF /* AuthService.swift in Sources */,
 				CCDD8469291C1508001B4AF7 /* SignInViewModel.swift in Sources */,
 				CCDD8465291C0F76001B4AF7 /* String+validation.swift in Sources */,
 				CCDD846C291C1852001B4AF7 /* MainButtonStyle.swift in Sources */,
 				CCDD8477291C230F001B4AF7 /* SettingsViewModel.swift in Sources */,
 				CCDD8475291C1B2B001B4AF7 /* RootView.swift in Sources */,
+				CC1E6DFD2922BA1200946FAF /* StorageService.swift in Sources */,
 				CC4BC8852912F5A800A69FF9 /* MessageModel.swift in Sources */,
 				CCDD8467291C1389001B4AF7 /* SignInView.swift in Sources */,
 				CC4BC8872912F60900A69FF9 /* MessageContentView.swift in Sources */,
