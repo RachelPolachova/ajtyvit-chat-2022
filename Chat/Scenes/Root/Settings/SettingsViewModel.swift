@@ -27,6 +27,10 @@ class SettingsViewModel: ObservableObject {
         }
     }
     
+    init() {
+        downloadImage()
+    }
+    
     func signOut() {
         do {
             try authService.signOut()
@@ -73,6 +77,24 @@ class SettingsViewModel: ObservableObject {
         }
     }
     
+    private func downloadImage() {
+        storageService.downloadImage()
+            .receive(on: DispatchQueue.main)
+            .sink { completion in
+                switch completion {
+                case .finished:
+                    print("downloaded image successfuly.")
+                case .failure(let error):
+                    print("failed to download image: \(error)")
+                }
+            } receiveValue: { imageData in
+                guard let uiImage = UIImage(data: imageData) else { return } // UIKit image
+                
+                self.image = Image(uiImage: uiImage) // SwiftUI image
+            }
+            .store(in: &disposeBag)
+    }
+    
     private func uploadImage(imageData: Data) {
         self.storageService.uploadImage(imageData: imageData)
             .receive(on: DispatchQueue.main)
@@ -82,7 +104,9 @@ class SettingsViewModel: ObservableObject {
                     print("uploaded image successfuly")
                 case .failure(let error):
                     print("failed to upload to the image")
-                    self.errorMessage = error.localizedDescription
+//                    DispatchQueue.main.async {
+                        self.errorMessage = error.localizedDescription
+//                    }
                 }
             } receiveValue: { _ in
                 //

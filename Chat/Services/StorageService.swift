@@ -19,17 +19,29 @@ class StorageService {
     
     private var disposeBag = Set<AnyCancellable>()
     
+    func downloadImage() -> AnyPublisher<Data, Error> {
+        guard let uid = Auth.auth().currentUser?.uid else {
+            return Fail(outputType: Data.self, failure: StorageError.invalidUid)
+                .eraseToAnyPublisher()
+        }
+        
+        let ref = Storage.storage().reference().child("profilePictures/\(uid).jpg")
+        
+        return ref.getData(maxSize: 3 * 1024 * 1024)
+            .eraseToAnyPublisher()
+    }
+    
     func uploadImage(imageData: Data) -> AnyPublisher<StorageMetadata, Error> {
         guard let uid = Auth.auth().currentUser?.uid else {
             return Fail(outputType: StorageMetadata.self, failure: StorageError.invalidUid)
                 .eraseToAnyPublisher()
         }
         
-        let ref = Storage.storage().reference()
+        let ref = Storage.storage().reference().child("profilePictures/\(uid).jpg")
         
-        return ref.child("profilePictures/\(uid).jpg")
-            .putData(imageData)
+        return ref.putData(imageData)
             .eraseToAnyPublisher()
+        
 //            .sink { completion in
 //                switch completion {
 //                case .finished:

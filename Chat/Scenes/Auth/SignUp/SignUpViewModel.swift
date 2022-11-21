@@ -5,6 +5,7 @@
 //  Created by Rachel Polachova on 07/11/2022.
 //
 
+import Combine
 import Foundation
 
 class SignUpViewModel: ObservableObject {
@@ -16,6 +17,7 @@ class SignUpViewModel: ObservableObject {
     var password2 = ""
     
     private let authService = AuthService()
+    private var disposeBag = Set<AnyCancellable>()
     
     func signUp() {
         print("sign up pressed")
@@ -42,11 +44,15 @@ class SignUpViewModel: ObservableObject {
         
         error = nil
         
-        authService.signUp(with: email, password: password1) { networkError in
-            if let networkError = networkError {
-                self.error = .network(networkError)
+        authService.signUp(with: email, password: password1)
+            .sink { completion in
+                if case .failure(let error) = completion {
+                    self.error = .network(error)
+                }
+            } receiveValue: { _ in
+                //
             }
-        }
+            .store(in: &disposeBag)
         
         print("signing up with: \(email), \(password1), \(password2)")
     }

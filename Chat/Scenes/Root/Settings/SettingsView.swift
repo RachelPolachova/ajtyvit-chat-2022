@@ -14,9 +14,11 @@ struct SettingsView: View {
     var body: some View {
         VStack {
             
+            /// TODO: IMPROVE UX
             if let image = viewModel.image {
                 image
                     .resizable()
+                    .scaledToFill()
                     .frame(width: 60, height: 60)
                     .clipShape(Circle())
             } else {
@@ -27,7 +29,12 @@ struct SettingsView: View {
             }
             
             PhotosPicker(selection: $viewModel.selectedItem, matching: .images) {
-                Text("Change pic")
+                Text("Change profile picture")
+            }
+            
+            if let errorMessage = viewModel.errorMessage {
+                Text(errorMessage)
+                    .foregroundColor(.red)
             }
             
             Spacer()

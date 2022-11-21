@@ -5,46 +5,74 @@
 //  Created by Rachel Polachova on 07/11/2022.
 //
 
+import Combine
 import Foundation
 
 class ConversationViewModel: ObservableObject {
     @Published var messages: [MessageModel] = []
     
+    
     var messageFieldValue: String = ""
     
-    private var mockedMessages = [
-        MessageModel(content: "dawijojdoi aa 3", isCurrentUser: true),
-        MessageModel(content: "dawijojdoi aa 2", isCurrentUser: true),
-        MessageModel(content: "dawijojdoi aa", isCurrentUser: true),
-        MessageModel(content: "ADajidoajio", isCurrentUser: true),
-        MessageModel(content: "Ojiodawjoid2", isCurrentUser: false),
-        MessageModel(content: "adjio 92999 ", isCurrentUser: true),
-        MessageModel(content: "4th", isCurrentUser: true),
-        MessageModel(content: "Really.", isCurrentUser: false),
-        MessageModel(content: "I am a friend.", isCurrentUser: false),
-        MessageModel(content: "I am the current user.", isCurrentUser: true),
-    ]
+    private let chatService = ChatService()
+    private let authService = AuthService()
+    private var disposeBag = Set<AnyCancellable>()
     
     init() {
         print("conversation viewmodel init.")
-        
-        mockMessages()
+        startObservingMessageDb()
+    }
+    
+    private func startObservingMessageDb() {
+        chatService.messageDbChangesPublisher(chatId: "test-chat-id")
+            .receive(on: DispatchQueue.main)
+            .sink { completion in
+                print("observe messages completion: \(completion)")
+            } receiveValue: { newMessages in
+                guard let uid = self.authService.uid else { return }
+                
+                newMessages
+                    .map { MessageModel(content: $0.text,
+                                        isCurrentUser: $0.senderId == uid) }
+                    .forEach { self.messages.insert($0, at: 0) }
+            }
+            .store(in: &disposeBag)
+
     }
     
     func sendMessage() {
         print("sending message: \(messageFieldValue)")
+        
+        guard let uid = authService.uid else { return }
+        
+        let message = DbMessageModel(senderId: uid, text: messageFieldValue, sentAt: Date().timeIntervalSince1970)
+        
+        chatService.sendMessage(message, chatId: "test-chat-id")
+            .sink { completion in
+                switch completion {
+                case .finished:
+                    print("send message finished.")
+                case .failure(let error):
+                    print("send message failed \(error)")
+                }
+            } receiveValue: { _ in
+                //
+            }
+            .store(in: &disposeBag)
+        
+        messageFieldValue = ""
     }
     
-    private func mockMessages() {
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak self] in
-            
-            if let poppedMessage = self?.mockedMessages.popLast() {
-                print("adding: \(poppedMessage)")
-                self?.messages.insert(poppedMessage, at: 0)
-                self?.mockMessages()
-            }
-        }
-        
-    }
+//    private func mockMessages() {
+//
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak self] in
+//
+//            if let poppedMessage = self?.mockedMessages.popLast() {
+//                print("adding: \(poppedMessage)")
+//                self?.messages.insert(poppedMessage, at: 0)
+//                self?.mockMessages()
+//            }
+//        }
+//        
+//    }
 }

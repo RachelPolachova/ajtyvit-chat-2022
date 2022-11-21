@@ -5,6 +5,7 @@
 //  Created by Rachel Polachova on 09/11/2022.
 //
 
+import Combine
 import Foundation
 
 class SignInViewModel: ObservableObject {
@@ -28,6 +29,7 @@ class SignInViewModel: ObservableObject {
     var password = ""
     
     private let authService = AuthService()
+    private var disposeBag = Set<AnyCancellable>()
     
     init() {
         print("sign in init")
@@ -42,10 +44,15 @@ class SignInViewModel: ObservableObject {
         
         print("sign in: \(email), \(password)")
         
-        authService.signIn(with: email, password: password) { networkError in
-            if let _ = networkError {
-                self.error = .network
+        authService.signIn(with: email, password: password)
+            .receive(on: DispatchQueue.main)
+            .sink { completion in
+                if case .failure = completion {
+                    self.error = .network
+                }
+            } receiveValue: { _ in
+                //
             }
-        }
+            .store(in: &disposeBag)
     }
 }
