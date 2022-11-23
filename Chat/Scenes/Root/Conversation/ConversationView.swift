@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ConversationView: View {
     
-    @StateObject var viewModel = ConversationViewModel()
+    @StateObject var viewModel: ConversationViewModel
     
 //    @State var messageField: String = ""
     
@@ -30,7 +30,7 @@ struct ConversationView: View {
             MessageInputView(viewModel: viewModel)
         }
         .navigationBarTitleDisplayMode(.inline)
-        .navigationTitle("Conversation")
+        .navigationTitle(viewModel.group.name)
     }
 }
 

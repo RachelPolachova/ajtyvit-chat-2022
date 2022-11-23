@@ -39,6 +39,12 @@ struct SettingsView: View {
             
             Spacer()
             
+            Button("Copy my ID") {
+                viewModel.copyUid()
+            }
+            
+            Spacer()
+            
             Button("Sign out") {
                 viewModel.signOut()
             }

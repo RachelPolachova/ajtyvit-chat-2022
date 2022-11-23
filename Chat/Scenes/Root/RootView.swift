@@ -10,7 +10,7 @@ import SwiftUI
 struct RootView: View {
     var body: some View {
         TabView {
-            ConversationView()
+            ChatGroupsOverviewView()
                 .tabItem {
                     VStack {
                         Image(systemName: "message")

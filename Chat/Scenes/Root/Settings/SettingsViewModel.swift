@@ -31,6 +31,12 @@ class SettingsViewModel: ObservableObject {
         downloadImage()
     }
     
+    func copyUid() {
+        guard let uid = authService.uid else { return }
+        
+        UIPasteboard.general.string = uid
+    }
+    
     func signOut() {
         do {
             try authService.signOut()

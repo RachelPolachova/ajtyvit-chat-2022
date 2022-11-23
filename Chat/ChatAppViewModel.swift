@@ -32,7 +32,5 @@ class ChatAppViewModel: ObservableObject {
                 self.userIsSignedIn = user != nil
             }
             .store(in: &disposeBag)
-
-        
     }
 }

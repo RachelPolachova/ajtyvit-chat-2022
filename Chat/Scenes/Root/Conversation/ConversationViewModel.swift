@@ -13,18 +13,21 @@ class ConversationViewModel: ObservableObject {
     
     
     var messageFieldValue: String = ""
+    let group: GroupModel
     
     private let chatService = ChatService()
     private let authService = AuthService()
     private var disposeBag = Set<AnyCancellable>()
     
-    init() {
+    init(group: GroupModel) {
         print("conversation viewmodel init.")
+        self.group = group
+        
         startObservingMessageDb()
     }
     
     private func startObservingMessageDb() {
-        chatService.messageDbChangesPublisher(chatId: "test-chat-id")
+        chatService.messageDbChangesPublisher(chatId: group.id)
             .receive(on: DispatchQueue.main)
             .sink { completion in
                 print("observe messages completion: \(completion)")
@@ -47,7 +50,7 @@ class ConversationViewModel: ObservableObject {
         
         let message = DbMessageModel(senderId: uid, text: messageFieldValue, sentAt: Date().timeIntervalSince1970)
         
-        chatService.sendMessage(message, chatId: "test-chat-id")
+        chatService.sendMessage(message, chatId: group.id)
             .sink { completion in
                 switch completion {
                 case .finished:

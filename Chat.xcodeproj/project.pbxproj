@@ -25,6 +25,9 @@
 		CC4BC8852912F5A800A69FF9 /* MessageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4BC8842912F5A800A69FF9 /* MessageModel.swift */; };
 		CC4BC8872912F60900A69FF9 /* MessageContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4BC8862912F60900A69FF9 /* MessageContentView.swift */; };
 		CC4BC88A2912FA2500A69FF9 /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4BC8892912FA2500A69FF9 /* MessageView.swift */; };
+		CCDCEFD5292E864B00B41445 /* ChatGroupsOverviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCDCEFD4292E864B00B41445 /* ChatGroupsOverviewView.swift */; };
+		CCDCEFD8292E86CF00B41445 /* GroupModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCDCEFD7292E86CF00B41445 /* GroupModel.swift */; };
+		CCDCEFDA292E876B00B41445 /* ChatGroupsOverviewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCDCEFD9292E876B00B41445 /* ChatGroupsOverviewViewModel.swift */; };
 		CCDD8465291C0F76001B4AF7 /* String+validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCDD8464291C0F76001B4AF7 /* String+validation.swift */; };
 		CCDD8467291C1389001B4AF7 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCDD8466291C1389001B4AF7 /* SignInView.swift */; };
 		CCDD8469291C1508001B4AF7 /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCDD8468291C1508001B4AF7 /* SignInViewModel.swift */; };
@@ -82,6 +85,9 @@
 		CC4BC8842912F5A800A69FF9 /* MessageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageModel.swift; sourceTree = "<group>"; };
 		CC4BC8862912F60900A69FF9 /* MessageContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageContentView.swift; sourceTree = "<group>"; };
 		CC4BC8892912FA2500A69FF9 /* MessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
+		CCDCEFD4292E864B00B41445 /* ChatGroupsOverviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatGroupsOverviewView.swift; sourceTree = "<group>"; };
+		CCDCEFD7292E86CF00B41445 /* GroupModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupModel.swift; sourceTree = "<group>"; };
+		CCDCEFD9292E876B00B41445 /* ChatGroupsOverviewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatGroupsOverviewViewModel.swift; sourceTree = "<group>"; };
 		CCDD8464291C0F76001B4AF7 /* String+validation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+validation.swift"; sourceTree = "<group>"; };
 		CCDD8466291C1389001B4AF7 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 		CCDD8468291C1508001B4AF7 /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
@@ -247,6 +253,24 @@
 			path = Conversation;
 			sourceTree = "<group>";
 		};
+		CCDCEFD3292E862300B41445 /* ChatGroupsOverview */ = {
+			isa = PBXGroup;
+			children = (
+				CCDCEFD6292E86C700B41445 /* Model */,
+				CCDCEFD4292E864B00B41445 /* ChatGroupsOverviewView.swift */,
+				CCDCEFD9292E876B00B41445 /* ChatGroupsOverviewViewModel.swift */,
+			);
+			path = ChatGroupsOverview;
+			sourceTree = "<group>";
+		};
+		CCDCEFD6292E86C700B41445 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CCDCEFD7292E86CF00B41445 /* GroupModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		CCDD8463291C0F49001B4AF7 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -303,6 +327,7 @@
 		CCDD8473291C1B14001B4AF7 /* Root */ = {
 			isa = PBXGroup;
 			children = (
+				CCDCEFD3292E862300B41445 /* ChatGroupsOverview */,
 				CC4BC8882912FA1300A69FF9 /* Conversation */,
 				CCDD846D291C1AD6001B4AF7 /* Settings */,
 				CCDD8474291C1B2B001B4AF7 /* RootView.swift */,
@@ -463,6 +488,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				CC1E6DF92922B12F00946FAF /* SignUpError.swift in Sources */,
+				CCDCEFDA292E876B00B41445 /* ChatGroupsOverviewViewModel.swift in Sources */,
+				CCDCEFD8292E86CF00B41445 /* GroupModel.swift in Sources */,
 				CCDD846F291C1ADF001B4AF7 /* SettingsView.swift in Sources */,
 				CCE16E6F29197582006DD1CF /* ConversationViewModel.swift in Sources */,
 				CCE16E71291981FC006DD1CF /* MessageInputView.swift in Sources */,
@@ -479,6 +506,7 @@
 				CC1E6DFD2922BA1200946FAF /* StorageService.swift in Sources */,
 				CC4BC8852912F5A800A69FF9 /* MessageModel.swift in Sources */,
 				CCDD8467291C1389001B4AF7 /* SignInView.swift in Sources */,
+				CCDCEFD5292E864B00B41445 /* ChatGroupsOverviewView.swift in Sources */,
 				CC4BC8872912F60900A69FF9 /* MessageContentView.swift in Sources */,
 				CC4BC85A2912EBC200A69FF9 /* ChatApp.swift in Sources */,
 				CC4BC88A2912FA2500A69FF9 /* MessageView.swift in Sources */,

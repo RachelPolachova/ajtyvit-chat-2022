@@ -12,6 +12,32 @@ import FirebaseFirestoreCombineSwift
 
 class ChatService {
     
+    func createGroup(name: String, members: [String]) -> AnyPublisher<(), Error> {
+        let newGroup = GroupModel(id: UUID().uuidString,
+                                  name: name,
+                                  members: members,
+                                  recentMessage: nil)
+        
+        return Firestore.firestore()
+            .collection("groups")
+            .document(newGroup.id)
+            .setData(from: newGroup)
+            .eraseToAnyPublisher()
+    }
+    
+    func groupsChangesPublisher(for uid: String) -> AnyPublisher<[GroupModel], Error> {
+        Firestore.firestore()
+            .collection("groups")
+            .whereField("members", arrayContains: uid)
+            .snapshotPublisher()
+            .map { snapshot in
+                let documentsDict = snapshot.documentChanges.map { $0.document.data() }
+                let documentJsons = documentsDict.compactMap { try? JSONSerialization.data(withJSONObject: $0) }
+                let groups = documentJsons.compactMap { try? JSONDecoder().decode(GroupModel.self, from: $0) }
+            }
+            .eraseToAnyPublisher()
+    }
+    
     func messageDbChangesPublisher(chatId: String) -> AnyPublisher<[DbMessageModel], Error> {
         Firestore.firestore()
             .collection("messages")
