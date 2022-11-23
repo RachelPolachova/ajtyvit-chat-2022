@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		34879797292E9E090029B95A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 34879796292E9E090029B95A /* GoogleService-Info.plist */; };
+		34879799292EAB0E0029B95A /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34879798292EAB0E0029B95A /* UserModel.swift */; };
 		CC08010B292BF60900A6C02F /* ChatService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC08010A292BF60900A6C02F /* ChatService.swift */; };
 		CC08010D292BF71600A6C02F /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = CC08010C292BF71600A6C02F /* FirebaseFirestore */; };
 		CC08010F292BF71C00A6C02F /* FirebaseFirestoreCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = CC08010E292BF71C00A6C02F /* FirebaseFirestoreCombine-Community */; };
@@ -40,7 +42,6 @@
 		CCDD847E291C339E001B4AF7 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = CCDD847D291C339E001B4AF7 /* FirebaseCrashlytics */; };
 		CCDD8480291C339E001B4AF7 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = CCDD847F291C339E001B4AF7 /* FirebaseStorage */; };
 		CCDD8482291C339E001B4AF7 /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = CCDD8481291C339E001B4AF7 /* FirebaseStorageCombine-Community */; };
-		CCDD8484291C34DD001B4AF7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CCDD8483291C34DD001B4AF7 /* GoogleService-Info.plist */; };
 		CCE16E6D29196CCB006DD1CF /* ConversationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE16E6C29196CCB006DD1CF /* ConversationView.swift */; };
 		CCE16E6F29197582006DD1CF /* ConversationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE16E6E29197582006DD1CF /* ConversationViewModel.swift */; };
 		CCE16E71291981FC006DD1CF /* MessageInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE16E70291981FC006DD1CF /* MessageInputView.swift */; };
@@ -66,6 +67,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		34879796292E9E090029B95A /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
+		34879798292EAB0E0029B95A /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		CC08010A292BF60900A6C02F /* ChatService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatService.swift; sourceTree = "<group>"; };
 		CC080112292BF80200A6C02F /* DbMessageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbMessageModel.swift; sourceTree = "<group>"; };
 		CC1E6DF32922A9E700946FAF /* ChatAppViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatAppViewModel.swift; sourceTree = "<group>"; };
@@ -95,7 +98,6 @@
 		CCDD846E291C1ADF001B4AF7 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		CCDD8474291C1B2B001B4AF7 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		CCDD8476291C230F001B4AF7 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
-		CCDD8483291C34DD001B4AF7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CCE16E6C29196CCB006DD1CF /* ConversationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationView.swift; sourceTree = "<group>"; };
 		CCE16E6E29197582006DD1CF /* ConversationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationViewModel.swift; sourceTree = "<group>"; };
 		CCE16E70291981FC006DD1CF /* MessageInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageInputView.swift; sourceTree = "<group>"; };
@@ -138,7 +140,6 @@
 		CC080110292BF7CB00A6C02F /* Chat */ = {
 			isa = PBXGroup;
 			children = (
-				CC080111292BF7E500A6C02F /* Model */,
 				CC08010A292BF60900A6C02F /* ChatService.swift */,
 			);
 			path = Chat;
@@ -148,6 +149,7 @@
 			isa = PBXGroup;
 			children = (
 				CC080112292BF80200A6C02F /* DbMessageModel.swift */,
+				34879798292EAB0E0029B95A /* UserModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -155,6 +157,7 @@
 		CC1E6DF52922AFC800946FAF /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				CC080111292BF7E500A6C02F /* Model */,
 				CC080110292BF7CB00A6C02F /* Chat */,
 				CC1E6DF62922AFD800946FAF /* AuthService.swift */,
 				CC1E6DFC2922BA1200946FAF /* StorageService.swift */,
@@ -201,7 +204,7 @@
 				CC1E6DF32922A9E700946FAF /* ChatAppViewModel.swift */,
 				CC4BC85B2912EBC200A69FF9 /* ContentView.swift */,
 				CC4BC85D2912EBC400A69FF9 /* Assets.xcassets */,
-				CCDD8483291C34DD001B4AF7 /* GoogleService-Info.plist */,
+				34879796292E9E090029B95A /* GoogleService-Info.plist */,
 				CC4BC85F2912EBC400A69FF9 /* Preview Content */,
 			);
 			path = Chat;
@@ -462,7 +465,7 @@
 			files = (
 				CC4BC8612912EBC400A69FF9 /* Preview Assets.xcassets in Resources */,
 				CC4BC85E2912EBC400A69FF9 /* Assets.xcassets in Resources */,
-				CCDD8484291C34DD001B4AF7 /* GoogleService-Info.plist in Resources */,
+				34879797292E9E090029B95A /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -503,6 +506,7 @@
 				CC080113292BF80200A6C02F /* DbMessageModel.swift in Sources */,
 				CCDD8477291C230F001B4AF7 /* SettingsViewModel.swift in Sources */,
 				CCDD8475291C1B2B001B4AF7 /* RootView.swift in Sources */,
+				34879799292EAB0E0029B95A /* UserModel.swift in Sources */,
 				CC1E6DFD2922BA1200946FAF /* StorageService.swift in Sources */,
 				CC4BC8852912F5A800A69FF9 /* MessageModel.swift in Sources */,
 				CCDD8467291C1389001B4AF7 /* SignInView.swift in Sources */,
@@ -679,6 +683,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -708,6 +713,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

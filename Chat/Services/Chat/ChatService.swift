@@ -12,6 +12,8 @@ import FirebaseFirestoreCombineSwift
 
 class ChatService {
     
+    private var disposeBag = Set<AnyCancellable>()
+    
     func createGroup(name: String, members: [String]) -> AnyPublisher<(), Error> {
         let newGroup = GroupModel(id: UUID().uuidString,
                                   name: name,
@@ -25,6 +27,32 @@ class ChatService {
             .eraseToAnyPublisher()
     }
     
+    func addMessageToGroup(with id: String, message: DbMessageModel) {
+        guard
+            let encodedMessage = try? JSONEncoder().encode(message),
+            let dictMessage = try? JSONSerialization.jsonObject(with: encodedMessage) else
+        {
+            return
+        }
+        
+        Firestore.firestore()
+            .collection("groups")
+            .document(id)
+            .updateData(["recentMessage": dictMessage])
+            .sink { completion in
+                switch completion {
+                case .finished:
+                    print("update recent message - succes")
+                case .failure(let error):
+                    print("update recent message - failure \(error)")
+                }
+            } receiveValue: { _ in
+                //
+            }
+            .store(in: &disposeBag)
+
+    }
+    
     func groupsChangesPublisher(for uid: String) -> AnyPublisher<[GroupModel], Error> {
         Firestore.firestore()
             .collection("groups")
@@ -34,6 +62,8 @@ class ChatService {
                 let documentsDict = snapshot.documentChanges.map { $0.document.data() }
                 let documentJsons = documentsDict.compactMap { try? JSONSerialization.data(withJSONObject: $0) }
                 let groups = documentJsons.compactMap { try? JSONDecoder().decode(GroupModel.self, from: $0) }
+                
+                return groups
             }
             .eraseToAnyPublisher()
     }
@@ -65,6 +95,9 @@ class ChatService {
     }
     
     func sendMessage(_ message: DbMessageModel, chatId: String) -> AnyPublisher<Void, Error> {
+        
+        addMessageToGroup(with: chatId, message: message)
+        
         return Firestore.firestore()
             .collection("messages")
             .document(chatId)

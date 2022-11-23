@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct GroupModel: Identifiable, Encodable {
+struct GroupModel: Identifiable, Codable {
     let id: String
     let name: String
     // members uid

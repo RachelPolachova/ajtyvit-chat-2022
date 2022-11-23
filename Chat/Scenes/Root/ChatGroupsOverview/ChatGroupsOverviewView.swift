@@ -19,7 +19,7 @@ struct ChatGroupsOverviewView: View {
                 NavigationLink {
                     ConversationView(viewModel: ConversationViewModel(group: group))
                 } label: {
-                    VStack {
+                    VStack(alignment: .leading) {
                         Text(group.name)
                             .font(.headline)
                         Text(group.recentMessage?.text ?? "No messages")

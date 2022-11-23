@@ -18,8 +18,8 @@ class ChatGroupsOverviewViewModel: ObservableObject {
     private let chatService = ChatService()
     private let authService = AuthService()
 
-    //    private var disposeBag = Set<AnyCancellable>()
-    private var addFriendCancellable: AnyCancellable?
+    private var disposeBag = Set<AnyCancellable>()
+//    private var addFriendCancellable: AnyCancellable?
     
     init() {
         startObservingGroups()
@@ -36,7 +36,7 @@ class ChatGroupsOverviewViewModel: ObservableObject {
         
         guard let currentUid = authService.uid else { return }
         
-        addFriendCancellable = chatService.createGroup(name: nameTextField, members: [uidTextField, currentUid])
+        chatService.createGroup(name: nameTextField, members: [uidTextField, currentUid])
             .sink { completion in
                 switch completion {
                 case .finished:
@@ -47,6 +47,7 @@ class ChatGroupsOverviewViewModel: ObservableObject {
             } receiveValue: { _ in
                 //
             }
+            .store(in: &disposeBag)
         
         
         nameTextField = ""
@@ -54,6 +55,25 @@ class ChatGroupsOverviewViewModel: ObservableObject {
     }
     
     private func startObservingGroups() {
+        guard let currentUid = authService.uid else { return }
+        
+        chatService.groupsChangesPublisher(for: currentUid)
+            .receive(on: DispatchQueue.main)
+            .sink(receiveCompletion: { completion in
+                if case .failure(let error) = completion {
+                    print("observing groups failed: \(error)")
+                }
+            }, receiveValue: { newGroups in
+                
+                newGroups.forEach { group in
+                    if let existingIndex = self.groups.firstIndex(where: { $0.id == group.id }) {
+                        self.groups.remove(at: existingIndex)
+                    }
+                    
+                    self.groups.insert(group, at: 0)
+                }
+            })
+            .store(in: &disposeBag)
         
     }
 }

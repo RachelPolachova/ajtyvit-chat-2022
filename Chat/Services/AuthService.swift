@@ -9,6 +9,8 @@ import Combine
 import Foundation
 import FirebaseAuth
 import FirebaseAuthCombineSwift
+import FirebaseFirestore
+import FirebaseStorageCombineSwift
 
 class AuthService {
     
@@ -30,6 +32,21 @@ class AuthService {
             .eraseToAnyPublisher()
     }
     
+    func signOut() throws {
+        try Auth.auth().signOut()
+    }
+    
+// TODO: finish sign up and update the users collection
+    private func addUserToFiresStore(_ user: UserModel) -> AnyPublisher<(), Error> {
+        return Firestore.firestore()
+            .collection("users")
+            .document(user.uid)
+            .setData(from: user)
+            .eraseToAnyPublisher()
+    }
+    
+    
+// - LEGACY, completion blocks
 //    func signUp(with email: String, password: String, completion: @escaping ((Error?) -> Void)) {
 //        Auth.auth().createUser(withEmail: email, password: password) { authResult, networkError in
 //            completion(networkError)
@@ -41,8 +58,4 @@ class AuthService {
 //            completion(networkError)
 //        }
 //    }
-    
-    func signOut() throws {
-        try Auth.auth().signOut()
-    }
 }
