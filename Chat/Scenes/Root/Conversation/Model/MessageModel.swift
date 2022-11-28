@@ -8,17 +8,30 @@
 import Foundation
 import SwiftUI
 
-struct MessageModel: Identifiable {
-    var id = UUID()
+struct MessageModel {
+    
+    enum User {
+        case current, other(UserModel?)
+    }
     
     let content: String
-    let isCurrentUser: Bool
+    let user: User
     
     var primaryColor: Color {
-        return isCurrentUser ? .blue : .gray
+        switch user {
+        case .current:
+            return .blue
+        case .other:
+            return .gray
+        }
     }
     
     var secondaryColor: Color {
-        return isCurrentUser ? .white : .black
+        switch user {
+        case .current:
+            return .white
+        case .other:
+            return .black
+        }
     }
 }

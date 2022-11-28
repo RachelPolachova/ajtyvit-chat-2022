@@ -16,7 +16,7 @@ class SettingsViewModel: ObservableObject {
     @Published var errorMessage: String?
     
     private let authService = AuthService()
-    private let storageService = StorageService()
+    private let settingsService = SettingsService()
     private var disposeBag = Set<AnyCancellable>()
     
     var selectedItem: PhotosPickerItem? {
@@ -84,7 +84,7 @@ class SettingsViewModel: ObservableObject {
     }
     
     private func downloadImage() {
-        storageService.downloadImage()
+        settingsService.downloadImage()
             .receive(on: DispatchQueue.main)
             .sink { completion in
                 switch completion {
@@ -102,7 +102,7 @@ class SettingsViewModel: ObservableObject {
     }
     
     private func uploadImage(imageData: Data) {
-        self.storageService.uploadImage(imageData: imageData)
+        self.settingsService.uploadImage(imageData: imageData)
             .receive(on: DispatchQueue.main)
             .sink { completion in
                 switch completion {

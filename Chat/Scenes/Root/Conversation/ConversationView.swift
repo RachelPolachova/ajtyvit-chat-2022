@@ -18,7 +18,9 @@ struct ConversationView: View {
             /// Storyboard - UITableView
             List(viewModel.messages) { message in
                 
-                MessageView(message: message)
+                MessageView(viewModel: MessageViewModel(dbMessage: message,
+                                                        members: viewModel.users,
+                                                        authService: viewModel.authService))
                     .listRowSeparator(.hidden)
                     .listRowBackground(Color.clear)
                     .rotationEffect(.radians(.pi))

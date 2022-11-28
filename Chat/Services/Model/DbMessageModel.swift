@@ -7,7 +7,8 @@
 
 import Foundation
 
-struct DbMessageModel: Encodable, Decodable {
+struct DbMessageModel: Encodable, Decodable, Identifiable {
+    let id: String
     let senderId: String
     let text: String
     let sentAt: TimeInterval

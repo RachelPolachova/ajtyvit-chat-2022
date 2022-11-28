@@ -9,14 +9,16 @@ import Combine
 import Foundation
 
 class ConversationViewModel: ObservableObject {
-    @Published var messages: [MessageModel] = []
+    @Published var messages: [DbMessageModel] = []
+    @Published var users: Set<UserModel> = []
     
     
     var messageFieldValue: String = ""
     let group: GroupModel
+    let authService = AuthService()
     
     private let chatService = ChatService()
-    private let authService = AuthService()
+    private let userService = UserService()
     private var disposeBag = Set<AnyCancellable>()
     
     init(group: GroupModel) {
@@ -24,6 +26,7 @@ class ConversationViewModel: ObservableObject {
         self.group = group
         
         startObservingMessageDb()
+        fetchUsersDetails()
     }
     
     private func startObservingMessageDb() {
@@ -32,23 +35,39 @@ class ConversationViewModel: ObservableObject {
             .sink { completion in
                 print("observe messages completion: \(completion)")
             } receiveValue: { newMessages in
-                guard let uid = self.authService.uid else { return }
-                
-                newMessages
-                    .map { MessageModel(content: $0.text,
-                                        isCurrentUser: $0.senderId == uid) }
-                    .forEach { self.messages.insert($0, at: 0) }
+                newMessages.forEach { self.messages.insert($0, at: 0) }
             }
             .store(in: &disposeBag)
 
+    }
+    
+    private func fetchUsersDetails() {
+        
+        guard let uid = authService.uid else { return }
+        
+        let otherMembers = group.members.filter { $0 != uid }
+        
+        otherMembers.forEach { member in
+            userService.usersDetails(uid: member)
+                .receive(on: DispatchQueue.main)
+                .sink { completion in
+                    print("user details fetch completion: \(completion) for user: \(member)")
+                } receiveValue: { memberData in
+                    self.users.insert(memberData)
+                }
+                .store(in: &disposeBag)
+        }
     }
     
     func sendMessage() {
         print("sending message: \(messageFieldValue)")
         
         guard let uid = authService.uid else { return }
-        
-        let message = DbMessageModel(senderId: uid, text: messageFieldValue, sentAt: Date().timeIntervalSince1970)
+            
+        let message = DbMessageModel(id: UUID().uuidString,
+                                     senderId: uid,
+                                     text: messageFieldValue,
+                                     sentAt: Date().timeIntervalSince1970)
         
         chatService.sendMessage(message, chatId: group.id)
             .sink { completion in

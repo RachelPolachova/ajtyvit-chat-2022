@@ -9,23 +9,35 @@ import SwiftUI
 
 struct MessageView: View {
     
-    var message: MessageModel
+    let viewModel: MessageViewModel
     
     var body: some View {
         HStack(alignment: .top) {
             
-            if message.isCurrentUser {
+            switch viewModel.message.user {
+            case .current:
                 Spacer()
-                MessageContentView(message: message)
-            } else {
+                MessageContentView(message: viewModel.message)
                 
-                Image("avatar-mock1")
-                    .resizable()
+            case .other(let userModel):
+                
+                if let photoUrl = userModel?.photoUrl {
+                    AsyncImage(url: URL(string: photoUrl)) { image in
+                        image.resizable()
+                    } placeholder: {
+                        ProgressView()
+                    }
                     .frame(width: 30, height: 30)
                     .clipShape(Circle())
+                    
+                } else {
+                    Image(systemName: "person")
+                        .resizable()
+                        .frame(width: 30, height: 30)
+                        .clipShape(Circle())
+                }
                 
-                MessageContentView(message: message)
-                
+                MessageContentView(message: viewModel.message)
                 Spacer()
             }
         }

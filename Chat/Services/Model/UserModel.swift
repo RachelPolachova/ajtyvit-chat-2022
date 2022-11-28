@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct UserModel: Codable {
+struct UserModel: Codable, Hashable {
     let uid: String
     let email: String
     let photoUrl: String?

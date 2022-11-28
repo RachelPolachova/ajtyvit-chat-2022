@@ -14,6 +14,8 @@ import FirebaseStorageCombineSwift
 
 class AuthService {
     
+    private var disposeBag = Set<AnyCancellable>()
+       
     var uid: String? {
         return Auth.auth().currentUser?.uid
     }
@@ -22,9 +24,28 @@ class AuthService {
         return Auth.auth().authStateDidChangePublisher()
     }
     
-    func signUp(with email: String, password: String) -> AnyPublisher<AuthDataResult, Error> {
-        return Auth.auth().createUser(withEmail: email, password: password)
-            .eraseToAnyPublisher()
+    func signUp(with email: String, password: String) -> AnyPublisher<(), Error> {
+        return Future { promise in
+            Auth.auth().createUser(withEmail: email, password: password)
+                .sink { completion in
+                    switch completion {
+                    case .finished:
+                        print("finished")
+                        promise(.success(()))
+                    case .failure(let error):
+                        print("error: \(error)")
+                        promise(.failure(error))
+                    }
+                } receiveValue: { [weak self] authData in
+                    let email = authData.user.email ?? "unknown"
+                    let uid = authData.user.uid
+                    let user = UserModel(uid: uid, email: email, photoUrl: nil)
+                    
+                    self?.addUserToFiresstore(user)
+                }
+                .store(in: &self.disposeBag)
+        }
+        .eraseToAnyPublisher()
     }
     
     func signIn(with email: String, password: String) -> AnyPublisher<AuthDataResult, Error> {
@@ -37,12 +58,17 @@ class AuthService {
     }
     
 // TODO: finish sign up and update the users collection
-    private func addUserToFiresStore(_ user: UserModel) -> AnyPublisher<(), Error> {
+    private func addUserToFiresstore(_ user: UserModel) {
         return Firestore.firestore()
             .collection("users")
             .document(user.uid)
             .setData(from: user)
-            .eraseToAnyPublisher()
+            .sink { completion in
+                print("adding user to firestore completion: \(completion)")
+            } receiveValue: { _ in
+                //
+            }
+            .store(in: &disposeBag)
     }
     
     
