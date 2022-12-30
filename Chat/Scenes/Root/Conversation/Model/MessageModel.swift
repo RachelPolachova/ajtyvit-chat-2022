@@ -11,7 +11,8 @@ import SwiftUI
 struct MessageModel {
     
     enum User {
-        case current, other(UserModel?)
+        case current
+        case other(UserModel?)
     }
     
     let content: String

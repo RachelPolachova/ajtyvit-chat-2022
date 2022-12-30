@@ -11,7 +11,7 @@ class MessageViewModel {
     
     let message: MessageModel
     
-    init(dbMessage: DbMessageModel, members: Set<UserModel>, authService: AuthService) {
+    init(dbMessage: DbMessageModel, members: Set<UserModel>, authService: AuthServing) {
         let uid = authService.uid ?? ""
         
         if dbMessage.senderId == uid {

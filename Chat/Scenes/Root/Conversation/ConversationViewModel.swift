@@ -15,21 +15,54 @@ class ConversationViewModel: ObservableObject {
     
     var messageFieldValue: String = ""
     let group: GroupModel
-    let authService = AuthService()
     
-    private let chatService = ChatService()
+    var authService: AuthServing
+    
+    private let chatService: ChatServing
     private let userService = UserService()
     private var disposeBag = Set<AnyCancellable>()
     
-    init(group: GroupModel) {
+    convenience init(group: GroupModel) {
+        self.init(group: group, chatService: ChatService(), authService: AuthService())
+    }
+    
+    init(group: GroupModel, chatService: ChatServing, authService: AuthServing) {
         print("conversation viewmodel init.")
         self.group = group
+        self.chatService = chatService
+        self.authService = authService
         
         startObservingMessageDb()
         fetchUsersDetails()
     }
     
+    func sendMessage() {
+        print("sending message: \(messageFieldValue)")
+        
+        guard let uid = authService.uid else { return }
+            
+        let message = DbMessageModel(id: UUID().uuidString,
+                                     senderId: uid,
+                                     text: messageFieldValue,
+                                     sentAt: Date().timeIntervalSince1970)
+        
+        chatService.sendMessage(message, chatId: group.id)
+            .sink { completion in
+                switch completion {
+                case .finished:
+                    self.messageFieldValue = ""
+                    print("send message finished.")
+                case .failure(let error):
+                    print("send message failed \(error)")
+                }
+            } receiveValue: { _ in
+                //
+            }
+            .store(in: &disposeBag)
+    }
+    
     private func startObservingMessageDb() {
+        
         chatService.messageDbChangesPublisher(chatId: group.id)
             .receive(on: DispatchQueue.main)
             .sink { completion in
@@ -38,7 +71,6 @@ class ConversationViewModel: ObservableObject {
                 newMessages.forEach { self.messages.insert($0, at: 0) }
             }
             .store(in: &disposeBag)
-
     }
     
     private func fetchUsersDetails() {
@@ -58,43 +90,4 @@ class ConversationViewModel: ObservableObject {
                 .store(in: &disposeBag)
         }
     }
-    
-    func sendMessage() {
-        print("sending message: \(messageFieldValue)")
-        
-        guard let uid = authService.uid else { return }
-            
-        let message = DbMessageModel(id: UUID().uuidString,
-                                     senderId: uid,
-                                     text: messageFieldValue,
-                                     sentAt: Date().timeIntervalSince1970)
-        
-        chatService.sendMessage(message, chatId: group.id)
-            .sink { completion in
-                switch completion {
-                case .finished:
-                    print("send message finished.")
-                case .failure(let error):
-                    print("send message failed \(error)")
-                }
-            } receiveValue: { _ in
-                //
-            }
-            .store(in: &disposeBag)
-        
-        messageFieldValue = ""
-    }
-    
-//    private func mockMessages() {
-//
-//        DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak self] in
-//
-//            if let poppedMessage = self?.mockedMessages.popLast() {
-//                print("adding: \(poppedMessage)")
-//                self?.messages.insert(poppedMessage, at: 0)
-//                self?.mockMessages()
-//            }
-//        }
-//        
-//    }
 }

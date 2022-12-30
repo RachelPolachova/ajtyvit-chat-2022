@@ -10,9 +10,21 @@ import Foundation
 import FirebaseFirestore
 import FirebaseFirestoreCombineSwift
 
-class ChatService {
+protocol ChatServing {
+    func createGroup(name: String, members: [String]) -> AnyPublisher<(), Error>
+    func addMessageToGroup(with id: String, message: DbMessageModel)
+    func groupsChangesPublisher(for uid: String) -> AnyPublisher<[GroupModel], Error>
+    func messageDbChangesPublisher(chatId: String) -> AnyPublisher<[DbMessageModel], Error>
+    func sendMessage(_ message: DbMessageModel, chatId: String) -> AnyPublisher<Void, Error>
+}
+
+class ChatService: ChatServing {
     
     private var disposeBag = Set<AnyCancellable>()
+    
+//    func methodInClassOnly() {
+//        print("tralalalala")
+//    }
     
     func createGroup(name: String, members: [String]) -> AnyPublisher<(), Error> {
         let newGroup = GroupModel(id: UUID().uuidString,

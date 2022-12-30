@@ -33,20 +33,9 @@
             parallelizable = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "345F5146293508C000723658"
+               BlueprintIdentifier = "CC4BC8652912EBC500A69FF9"
                BuildableName = "ChatTests.xctest"
                BlueprintName = "ChatTests"
-               ReferencedContainer = "container:Chat.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "YES"
-            parallelizable = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "CC4BC86F2912EBC500A69FF9"
-               BuildableName = "ChatUITests.xctest"
-               BlueprintName = "ChatUITests"
                ReferencedContainer = "container:Chat.xcodeproj">
             </BuildableReference>
          </TestableReference>

@@ -12,7 +12,11 @@ import FirebaseAuthCombineSwift
 import FirebaseFirestore
 import FirebaseStorageCombineSwift
 
-class AuthService {
+protocol AuthServing {
+    var uid: String? { get }
+}
+
+class AuthService: AuthServing {
     
     private var disposeBag = Set<AnyCancellable>()
        

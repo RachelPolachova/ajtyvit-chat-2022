@@ -9,8 +9,14 @@
 /* Begin PBXBuildFile section */
 		345F515329352D6F00723658 /* UsersService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 345F515229352D6F00723658 /* UsersService.swift */; };
 		345F51552935343200723658 /* MessageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 345F51542935343200723658 /* MessageViewModel.swift */; };
+		345F515929353F3600723658 /* ConversationViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 345F515829353F3600723658 /* ConversationViewModelTests.swift */; };
+		345F515C293540D300723658 /* ChatServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 345F515B293540D300723658 /* ChatServiceMock.swift */; };
 		34879797292E9E090029B95A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 34879796292E9E090029B95A /* GoogleService-Info.plist */; };
 		34879799292EAB0E0029B95A /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34879798292EAB0E0029B95A /* UserModel.swift */; };
+		34A5FA7E2937C65C00A25262 /* AuthServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34A5FA7D2937C65C00A25262 /* AuthServiceMock.swift */; };
+		34A5FA812937DA4400A25262 /* SettingsServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34A5FA802937DA4400A25262 /* SettingsServiceTests.swift */; };
+		34A5FA842937E17F00A25262 /* StorageMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34A5FA832937E17F00A25262 /* StorageMock.swift */; };
+		34A5FA862937E57B00A25262 /* FirestoreMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34A5FA852937E57B00A25262 /* FirestoreMock.swift */; };
 		CC08010B292BF60900A6C02F /* ChatService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC08010A292BF60900A6C02F /* ChatService.swift */; };
 		CC08010D292BF71600A6C02F /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = CC08010C292BF71600A6C02F /* FirebaseFirestore */; };
 		CC08010F292BF71C00A6C02F /* FirebaseFirestoreCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = CC08010E292BF71C00A6C02F /* FirebaseFirestoreCombine-Community */; };
@@ -23,9 +29,6 @@
 		CC4BC85C2912EBC200A69FF9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4BC85B2912EBC200A69FF9 /* ContentView.swift */; };
 		CC4BC85E2912EBC400A69FF9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CC4BC85D2912EBC400A69FF9 /* Assets.xcassets */; };
 		CC4BC8612912EBC400A69FF9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CC4BC8602912EBC400A69FF9 /* Preview Assets.xcassets */; };
-		CC4BC86B2912EBC500A69FF9 /* ChatTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4BC86A2912EBC500A69FF9 /* ChatTests.swift */; };
-		CC4BC8752912EBC500A69FF9 /* ChatUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4BC8742912EBC500A69FF9 /* ChatUITests.swift */; };
-		CC4BC8772912EBC500A69FF9 /* ChatUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4BC8762912EBC500A69FF9 /* ChatUITestsLaunchTests.swift */; };
 		CC4BC8852912F5A800A69FF9 /* MessageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4BC8842912F5A800A69FF9 /* MessageModel.swift */; };
 		CC4BC8872912F60900A69FF9 /* MessageContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4BC8862912F60900A69FF9 /* MessageContentView.swift */; };
 		CC4BC88A2912FA2500A69FF9 /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4BC8892912FA2500A69FF9 /* MessageView.swift */; };
@@ -59,20 +62,19 @@
 			remoteGlobalIDString = CC4BC8552912EBC200A69FF9;
 			remoteInfo = Chat;
 		};
-		CC4BC8712912EBC500A69FF9 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = CC4BC84E2912EBC200A69FF9 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = CC4BC8552912EBC200A69FF9;
-			remoteInfo = Chat;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		345F515229352D6F00723658 /* UsersService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersService.swift; sourceTree = "<group>"; };
 		345F51542935343200723658 /* MessageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewModel.swift; sourceTree = "<group>"; };
+		345F515829353F3600723658 /* ConversationViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationViewModelTests.swift; sourceTree = "<group>"; };
+		345F515B293540D300723658 /* ChatServiceMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatServiceMock.swift; sourceTree = "<group>"; };
 		34879796292E9E090029B95A /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		34879798292EAB0E0029B95A /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		34A5FA7D2937C65C00A25262 /* AuthServiceMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthServiceMock.swift; sourceTree = "<group>"; };
+		34A5FA802937DA4400A25262 /* SettingsServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsServiceTests.swift; sourceTree = "<group>"; };
+		34A5FA832937E17F00A25262 /* StorageMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageMock.swift; sourceTree = "<group>"; };
+		34A5FA852937E57B00A25262 /* FirestoreMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreMock.swift; sourceTree = "<group>"; };
 		CC08010A292BF60900A6C02F /* ChatService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatService.swift; sourceTree = "<group>"; };
 		CC080112292BF80200A6C02F /* DbMessageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbMessageModel.swift; sourceTree = "<group>"; };
 		CC1E6DF32922A9E700946FAF /* ChatAppViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatAppViewModel.swift; sourceTree = "<group>"; };
@@ -85,10 +87,6 @@
 		CC4BC85D2912EBC400A69FF9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CC4BC8602912EBC400A69FF9 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		CC4BC8662912EBC500A69FF9 /* ChatTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChatTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		CC4BC86A2912EBC500A69FF9 /* ChatTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTests.swift; sourceTree = "<group>"; };
-		CC4BC8702912EBC500A69FF9 /* ChatUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChatUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		CC4BC8742912EBC500A69FF9 /* ChatUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatUITests.swift; sourceTree = "<group>"; };
-		CC4BC8762912EBC500A69FF9 /* ChatUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		CC4BC8842912F5A800A69FF9 /* MessageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageModel.swift; sourceTree = "<group>"; };
 		CC4BC8862912F60900A69FF9 /* MessageContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageContentView.swift; sourceTree = "<group>"; };
 		CC4BC8892912FA2500A69FF9 /* MessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
@@ -131,16 +129,53 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CC4BC86D2912EBC500A69FF9 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		345F515629353EE000723658 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				345F515729353EE400723658 /* Conversation */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		345F515729353EE400723658 /* Conversation */ = {
+			isa = PBXGroup;
+			children = (
+				345F515A293540CA00723658 /* Mocks */,
+				345F515829353F3600723658 /* ConversationViewModelTests.swift */,
+			);
+			path = Conversation;
+			sourceTree = "<group>";
+		};
+		345F515A293540CA00723658 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				345F515B293540D300723658 /* ChatServiceMock.swift */,
+				34A5FA7D2937C65C00A25262 /* AuthServiceMock.swift */,
+			);
+			path = Mocks;
+			sourceTree = "<group>";
+		};
+		34A5FA7F2937DA2500A25262 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				34A5FA822937E17800A25262 /* Mocks */,
+				34A5FA802937DA4400A25262 /* SettingsServiceTests.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		34A5FA822937E17800A25262 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				34A5FA832937E17F00A25262 /* StorageMock.swift */,
+				34A5FA852937E57B00A25262 /* FirestoreMock.swift */,
+			);
+			path = Mocks;
+			sourceTree = "<group>";
+		};
 		CC080110292BF7CB00A6C02F /* Chat */ = {
 			isa = PBXGroup;
 			children = (
@@ -182,7 +217,6 @@
 			children = (
 				CC4BC8582912EBC200A69FF9 /* Chat */,
 				CC4BC8692912EBC500A69FF9 /* ChatTests */,
-				CC4BC8732912EBC500A69FF9 /* ChatUITests */,
 				CC4BC8572912EBC200A69FF9 /* Products */,
 				CC1E6DFE2922BA5200946FAF /* Frameworks */,
 			);
@@ -193,7 +227,6 @@
 			children = (
 				CC4BC8562912EBC200A69FF9 /* Chat.app */,
 				CC4BC8662912EBC500A69FF9 /* ChatTests.xctest */,
-				CC4BC8702912EBC500A69FF9 /* ChatUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -226,18 +259,10 @@
 		CC4BC8692912EBC500A69FF9 /* ChatTests */ = {
 			isa = PBXGroup;
 			children = (
-				CC4BC86A2912EBC500A69FF9 /* ChatTests.swift */,
+				34A5FA7F2937DA2500A25262 /* Services */,
+				345F515629353EE000723658 /* Scenes */,
 			);
 			path = ChatTests;
-			sourceTree = "<group>";
-		};
-		CC4BC8732912EBC500A69FF9 /* ChatUITests */ = {
-			isa = PBXGroup;
-			children = (
-				CC4BC8742912EBC500A69FF9 /* ChatUITests.swift */,
-				CC4BC8762912EBC500A69FF9 /* ChatUITestsLaunchTests.swift */,
-			);
-			path = ChatUITests;
 			sourceTree = "<group>";
 		};
 		CC4BC8832912F59900A69FF9 /* Model */ = {
@@ -400,24 +425,6 @@
 			productReference = CC4BC8662912EBC500A69FF9 /* ChatTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		CC4BC86F2912EBC500A69FF9 /* ChatUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = CC4BC8802912EBC500A69FF9 /* Build configuration list for PBXNativeTarget "ChatUITests" */;
-			buildPhases = (
-				CC4BC86C2912EBC500A69FF9 /* Sources */,
-				CC4BC86D2912EBC500A69FF9 /* Frameworks */,
-				CC4BC86E2912EBC500A69FF9 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				CC4BC8722912EBC500A69FF9 /* PBXTargetDependency */,
-			);
-			name = ChatUITests;
-			productName = ChatUITests;
-			productReference = CC4BC8702912EBC500A69FF9 /* ChatUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -433,11 +440,6 @@
 					};
 					CC4BC8652912EBC500A69FF9 = {
 						CreatedOnToolsVersion = 14.1;
-						TestTargetID = CC4BC8552912EBC200A69FF9;
-					};
-					CC4BC86F2912EBC500A69FF9 = {
-						CreatedOnToolsVersion = 14.1;
-						TestTargetID = CC4BC8552912EBC200A69FF9;
 					};
 				};
 			};
@@ -459,7 +461,6 @@
 			targets = (
 				CC4BC8552912EBC200A69FF9 /* Chat */,
 				CC4BC8652912EBC500A69FF9 /* ChatTests */,
-				CC4BC86F2912EBC500A69FF9 /* ChatUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -476,13 +477,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		CC4BC8642912EBC500A69FF9 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		CC4BC86E2912EBC500A69FF9 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -532,16 +526,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CC4BC86B2912EBC500A69FF9 /* ChatTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		CC4BC86C2912EBC500A69FF9 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				CC4BC8772912EBC500A69FF9 /* ChatUITestsLaunchTests.swift in Sources */,
-				CC4BC8752912EBC500A69FF9 /* ChatUITests.swift in Sources */,
+				345F515929353F3600723658 /* ConversationViewModelTests.swift in Sources */,
+				34A5FA862937E57B00A25262 /* FirestoreMock.swift in Sources */,
+				34A5FA7E2937C65C00A25262 /* AuthServiceMock.swift in Sources */,
+				345F515C293540D300723658 /* ChatServiceMock.swift in Sources */,
+				34A5FA812937DA4400A25262 /* SettingsServiceTests.swift in Sources */,
+				34A5FA842937E17F00A25262 /* StorageMock.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -552,11 +542,6 @@
 			isa = PBXTargetDependency;
 			target = CC4BC8552912EBC200A69FF9 /* Chat */;
 			targetProxy = CC4BC8672912EBC500A69FF9 /* PBXContainerItemProxy */;
-		};
-		CC4BC8722912EBC500A69FF9 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = CC4BC8552912EBC200A69FF9 /* Chat */;
-			targetProxy = CC4BC8712912EBC500A69FF9 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -597,6 +582,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -657,6 +643,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -684,7 +671,8 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Chat/Preview Content\"";
 				DEVELOPMENT_TEAM = MK6NLH3LG7;
-				ENABLE_PREVIEWS = YES;
+				ENABLE_ON_DEMAND_RESOURCES = NO;
+				ENABLE_PREVIEWS = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -714,7 +702,8 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Chat/Preview Content\"";
 				DEVELOPMENT_TEAM = MK6NLH3LG7;
-				ENABLE_PREVIEWS = YES;
+				ENABLE_ON_DEMAND_RESOURCES = NO;
+				ENABLE_PREVIEWS = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -738,76 +727,52 @@
 		CC4BC87E2912EBC500A69FF9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(EMBEDDED_CONTENT_CONTAINS_SWIFT)";
+				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = MK6NLH3LG7;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
 				MARKETING_VERSION = 1.0;
+				OTHER_SWIFT_FLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.polachova.rachel.ChatTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Chat.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Chat";
 			};
 			name = Debug;
 		};
 		CC4BC87F2912EBC500A69FF9 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(EMBEDDED_CONTENT_CONTAINS_SWIFT)";
+				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = MK6NLH3LG7;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
 				MARKETING_VERSION = 1.0;
+				OTHER_SWIFT_FLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.polachova.rachel.ChatTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Chat.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Chat";
-			};
-			name = Release;
-		};
-		CC4BC8812912EBC500A69FF9 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = MK6NLH3LG7;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.polachova.rachel.ChatUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = Chat;
-			};
-			name = Debug;
-		};
-		CC4BC8822912EBC500A69FF9 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = MK6NLH3LG7;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.polachova.rachel.ChatUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = Chat;
 			};
 			name = Release;
 		};
@@ -837,15 +802,6 @@
 			buildConfigurations = (
 				CC4BC87E2912EBC500A69FF9 /* Debug */,
 				CC4BC87F2912EBC500A69FF9 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		CC4BC8802912EBC500A69FF9 /* Build configuration list for PBXNativeTarget "ChatUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				CC4BC8812912EBC500A69FF9 /* Debug */,
-				CC4BC8822912EBC500A69FF9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
